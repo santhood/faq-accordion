@@ -1,0 +1,87 @@
+---
+const { question, answer, classList } = Astro.props
+---
+
+<div id='faq-item' class={`faq-item ${classList ? classList : ''}`}>
+  <h3>{question}</h3>
+  <p>{answer}</p>
+</div>
+
+<script>
+  const faqItem = document.querySelectorAll('#faq-item')
+
+  faqItem.forEach((faq) => {
+    faq.addEventListener('click', (ev) => {
+      const target = ev.target as HTMLDivElement
+
+      if (target.tagName === 'H3') {
+        const faqOpen = document.querySelector('.open')
+
+        if (target.parentElement.classList.contains('open')) {
+          faq.classList.remove('open')
+        } else {
+          faqOpen && faqOpen.classList.remove('open')
+          faq.classList.add('open')
+        }
+      }
+    })
+  })
+</script>
+
+<style>
+  .faq-item {
+    margin-block-start: 1.5rem;
+  }
+  .faq-item:not(:last-child) {
+    padding-block-end: 1.25rem;
+    border-block-end: 1px solid hsl(0, 0%, 82%);
+  }
+  .faq-item > h3 {
+    cursor: pointer;
+    line-height: 1.21;
+    font-weight: 600;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 32px;
+    position: relative;
+    transition: color 0.25s ease-in-out;
+  }
+  .faq-item > h3:hover {
+    color: #ad28eb;
+  }
+  .faq-item > h3::after {
+    height: 31px;
+    content: url('/images/icon-plus.svg');
+    position: absolute;
+    inset-inline-end: 0;
+  }
+  .faq-item.open > h3::after {
+    content: url('/images/icon-minus.svg');
+  }
+  .faq-item > p {
+    margin-block-start: 1.25rem;
+    line-height: 1.38;
+    font-size: 0.875rem;
+    display: none;
+    color: var(--grayish-purple);
+  }
+  .faq-item.open > p {
+    display: block;
+  }
+  @media (min-width: 768px) {
+    .faq-item {
+      margin-block-start: 1.75rem;
+    }
+    .faq-item:not(:last-child) {
+      padding-block-end: 1.5rem;
+    }
+    .faq-item > h3 {
+      font-size: 1.125rem;
+    }
+    .faq-item > p {
+      margin-block-start: 1.75rem;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+  }
+</style>

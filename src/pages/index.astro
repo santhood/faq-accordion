@@ -1,0 +1,84 @@
+---
+import '@fontsource-variable/work-sans'
+
+import FAQ from '../components/FAQ.astro'
+---
+
+<html lang='en'>
+  <head>
+    <meta charset='utf-8' />
+    <link rel='icon' type='image/svg+xml' href='/favicon-32x32.png' />
+    <meta name='viewport' content='width=device-width' />
+    <meta name='generator' content={Astro.generator} />
+    <title>Frontend Mentor | FAQ accordion</title>
+  </head>
+  <body>
+    <main>
+      <FAQ />
+    </main>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --white: hsl(0, 0%, 100%);
+    --light-pink: hsl(275, 100%, 97%);
+    --grayish-purple: hsl(292, 16%, 49%);
+    --dark-purple: hsl(292, 42%, 14%);
+  }
+
+  * {
+    min-width: 0;
+    font: inherit;
+  }
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  html {
+    line-height: 1.5;
+  }
+  img,
+  video,
+  svg {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+  button {
+    padding: 0;
+    border: none;
+    outline: none;
+    display: inline-block;
+    cursor: pointer;
+    color: inherit;
+    background-color: transparent;
+  }
+  body {
+    min-height: 100dvh;
+    margin: 0;
+    font-family: 'Work Sans Variable', sans-serif;
+    font-weight: 400;
+    color: var(--dark-purple);
+  }
+  ul,
+  ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+    text-wrap: balance;
+  }
+  p {
+    margin: 0;
+    text-wrap: pretty;
+  }
+</style>
